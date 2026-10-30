@@ -1,19 +1,20 @@
-import java.util.Scanner;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Solution {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String a = sc.next();
+class Solution {
+    public int solution(int a, int b, int c) {
+        int answer = 0;
+        Set<Integer> set = new HashSet<>();
+        set.add(a);
+        set.add(b);
+        set.add(c);
         
-        StringBuilder sb = new StringBuilder();
-        
-        for (String s : a.split("")) {
-            if (s.matches("[a-z]")) {
-                sb.append(s.toUpperCase());
-            } else {
-                sb.append(s.toLowerCase());
-            }
+        if (set.size() == 1) {
+            return ((a + b + c) * (Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2)) * (Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3)));
+        } else if (set.size() == 2) {
+            return ((a + b + c) * (Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2)));
+        } else {
+            return a + b + c;
         }
-        System.out.println(sb.toString());
     }
 }
